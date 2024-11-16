@@ -1,0 +1,30 @@
+import pgzrun,random
+WIDTH=500
+HEIGHT=500
+vx=1    
+
+bird=Actor("bird")
+   #screen.draw.background(farm)
+
+TITLE="bird hunter"
+def draw():
+    screen.clear()
+    screen.fill("blue")
+    screen.draw.text("Hello try my game",(300,50))
+    bird.draw()
+
+def update():
+    global vx
+    bird.x+=vx
+    if bird.right>WIDTH or bird.left<0:
+        vx=-vx
+
+def on_mouse_down(pos):
+    global message
+    if bird.collidepoint(pos):
+        bird.y=random.randint(50,WIDTH-50)
+        message="Good Shot"
+    else:
+        message="try again  haha"
+
+pgzrun.go()
